@@ -19,7 +19,6 @@ app.use('/mascotas', pets_router);
 /* --- Middleware --- */
 app.use((request, response, next) => {
     // response.status(404).sendFile(__dirname + '/public/404.html'); //v1
-
     response.status(404).render('404', {
         title: 'Página 404',
         description: 'No eh encontrado lo que buscas xD...',
