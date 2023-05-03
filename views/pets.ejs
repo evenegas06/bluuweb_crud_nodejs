@@ -36,7 +36,14 @@
                                     Editar
                                 </a>
                             </td>
-                            <td><% // TODO: eliminar %></td>
+                            <td>
+                                <a
+                                    href="/mascotas/delete/<%= pet.id %>"
+                                    class="btn btn-danger btn-sm"
+                                >
+                                    Eliminar
+                                </a>
+                            </td>
                         </tr>
                     <% }) %>
                 <% } %>
@@ -45,3 +52,21 @@
     </div>
 
     <%- include('templates/footer') %>
+
+    <script>
+
+        const delete_button = document.getElementById('deleteButton');
+        
+        delete_button.addEventListener('click', async () => {
+            console.log('dd')
+            const id = delete_button.dataset.id;
+            try {
+                const data = await fetch(`/mascotas/${id}`, {
+                    method: 'delete',
+                });
+            } catch (error) {
+                console.error(error);
+            }
+        });
+
+    </script>

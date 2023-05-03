@@ -57,4 +57,16 @@ router.get('/:id', async (request, response) => {
     }
 });
 
+router.get('/delete/:id', async (request, response) => {
+    const id = request.params.id;
+
+    try {
+        await Pet.findByIdAndDelete(id);
+
+        response.redirect('/mascotas');
+    } catch (error) {
+        console.error(error);
+    }
+});
+
 module.exports = router;
