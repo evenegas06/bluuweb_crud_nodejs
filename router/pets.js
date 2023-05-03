@@ -12,7 +12,7 @@ router.get('/', async (request, response) => {
             pets_array
         });
     } catch (error) {
-        console.log(error);
+        console.error(error);
     }
 });
 
@@ -28,12 +28,33 @@ router.post('/', async (request, response) => {
     try {
         const pet = new Pet(body);
         await pet.save();
-        
+
         response.redirect('/mascotas');
     } catch (error) {
-        console.log(error);
+        console.error(error);
     }
 
+});
+
+//Display the specified resource.
+router.get('/:id', async (request, response) => {
+    const id = request.params.id;
+
+    try {
+        const pet = await Pet.findById(id);
+
+        response.render('pet-details', {
+            pet,
+            error: false,
+        });
+    } catch (error) {
+        console.error(error);
+
+        response.render('pet-details', {
+            error: true,
+            message: 'No se encuentra el id seleccionado. :('
+        });
+    }
 });
 
 module.exports = router;

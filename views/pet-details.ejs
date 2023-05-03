@@ -1,0 +1,48 @@
+<%- include('templates/header', { page_title: 'Crear mascota' }) %>
+
+    <div class="container">
+        <h1>
+            Detalles de la mascota
+        </h1>
+        
+        <% if (error) { %>
+            <p>
+                <%= message %>
+            </p>
+            <div class="d-grid gap-2">
+                <a
+                    href="/mascotas"
+                    class="btn btn-dark btn-block"
+                >
+                    Volver al listado de mascotas
+                </a>
+            </div>
+        <% } else { %> 
+            <table class="table table-bordered table-primary">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Descripción</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">
+                            <%= pet.id %>
+                        </th>
+                        <td>
+                            <%= pet.name %>
+                        </td>
+                        <td>
+                            <%= pet.description %>
+                        </td>
+                        <td>@mdo</td>
+                    </tr>
+                </tbody>
+            </table>
+        <% } %>
+    </div>
+
+    <%- include('templates/footer') %>

@@ -19,7 +19,7 @@
                     <th scope="col">#</th>
                     <th scope="col">Nombre</th>
                     <th scope="col">Descripción</th>
-                    <th scope="col">Acciones</th>
+                    <th scope="col" colspan="2">Acciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -29,7 +29,14 @@
                             <th scope="row"><%= pet.id %></th>
                             <td><%= pet.name %></td>
                             <td><%= pet.description %></td>
-                            <td>@mdo</td>
+                            <td>
+                                <a 
+                                    href="/mascotas/<%= pet.id %>" 
+                                    class="btn btn-warning btn-sm">
+                                    Editar
+                                </a>
+                            </td>
+                            <td><% // TODO: eliminar %></td>
                         </tr>
                     <% }) %>
                 <% } %>
