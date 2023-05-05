@@ -18,7 +18,32 @@
                 </a>
             </div>
         <% } else { %> 
-            <table class="table table-bordered table-primary">
+
+            <form action="/mascotas/actualizar/<%= pet.id %>" method="post">
+                <input 
+                    type="text"
+                    class="form-control my-2"
+                    name="name"
+                    value="<%= pet.name %>"
+                />
+                <input 
+                    type="text"
+                    class="form-control my-2"
+                    name="description"
+                    value="<%= pet.description %>"
+                />
+
+                <div class="d-grid gap-2">
+                    <button
+                        type="submit"
+                        class="btn btn-warning btn-block"
+                    >
+                        Actualizar
+                    </button>
+                </div>
+            </form>
+
+            <!-- <table class="table table-bordered table-primary">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
@@ -41,7 +66,7 @@
                         <td>@mdo</td>
                     </tr>
                 </tbody>
-            </table>
+            </table> -->
         <% } %>
     </div>
 

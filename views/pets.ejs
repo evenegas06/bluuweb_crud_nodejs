@@ -38,7 +38,7 @@
                             </td>
                             <td>
                                 <a
-                                    href="/mascotas/delete/<%= pet.id %>"
+                                    href="/mascotas/eliminar/<%= pet.id %>"
                                     class="btn btn-danger btn-sm"
                                 >
                                     Eliminar
@@ -55,6 +55,8 @@
 
     <script>
 
+        // to use the http delete method
+        /*
         const delete_button = document.getElementById('deleteButton');
         
         delete_button.addEventListener('click', async () => {
@@ -68,5 +70,6 @@
                 console.error(error);
             }
         });
+        */
 
     </script>

@@ -36,7 +36,7 @@ router.post('/', async (request, response) => {
 
 });
 
-//Display the specified resource.
+// Display the specified resource.
 router.get('/:id', async (request, response) => {
     const id = request.params.id;
 
@@ -57,11 +57,28 @@ router.get('/:id', async (request, response) => {
     }
 });
 
-router.get('/delete/:id', async (request, response) => {
+// Remove the specified resource from storage.
+router.get('/eliminar/:id', async (request, response) => {
     const id = request.params.id;
 
     try {
         await Pet.findByIdAndDelete(id);
+
+        response.redirect('/mascotas');
+    } catch (error) {
+        console.error(error);
+    }
+});
+
+// Update the specified resource in storage.
+router.post('/actualizar/:id', async (request, response) => {
+    const id = request.params.id;
+    const body = request.body;
+
+    try {
+        const pet = await Pet.findByIdAndUpdate(id, body, {
+            useFindAndModify: false 
+        });
 
         response.redirect('/mascotas');
     } catch (error) {
